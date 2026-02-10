@@ -21,10 +21,23 @@ export class GeminiService {
         temperature: 0.7,
         maxOutputTokens: 300,
         responseMimeType: "application/json",
+        responseSchema: {
+          type: "object",
+          properties: {
+            spokenText: { type: "string" },
+            emotion: { type: "string" },
+            animation: { type: "string" },
+            suggestedOptions: { type: "array", items: { type: "string" } },
+            stage: { type: "string" },
+          },
+          required: ["spokenText", "emotion", "animation", "stage"],
+        },
       },
     });
 
-    const text = response.text.trim();
+    let text = response.text.trim();
+    // Strip markdown code fences if present (e.g. ```json ... ```)
+    text = text.replace(/^```(?:json)?\s*\n?/i, "").replace(/\n?```\s*$/i, "");
     return JSON.parse(text);
   }
 }
