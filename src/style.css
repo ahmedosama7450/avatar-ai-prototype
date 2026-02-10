@@ -71,7 +71,6 @@ body {
   width: 100%;
 }
 
-
 #input-container {
   display: flex;
   gap: 8px;
@@ -218,5 +217,107 @@ body {
   #dialog-text {
     font-size: 16px;
   }
+}
 
+/* API Key Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-content h2 {
+  color: #ff6b6b;
+  margin-bottom: 1rem;
+}
+
+.modal-content p {
+  color: #555;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.small-text {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.modal-content a {
+  color: #4ecdc4;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+.modal-content input:focus {
+  border-color: #4ecdc4;
+  outline: none;
+}
+
+.modal-content button {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    background 0.2s;
+  width: 100%;
+}
+
+.modal-content button:hover {
+  background: #ff5252;
+  transform: scale(1.05);
+}
+
+.error-message {
+  color: #ff0000;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
 }

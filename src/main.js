@@ -101,5 +101,61 @@ document.addEventListener("keydown", (e) => {
 });
 
 // --- Start Interaction ---
-const controller = new InteractionController(eventBus, animationEngine);
-controller.start();
+// Check for API Key in this order:
+// 1. Dev/Build environment variable (VITE_GEMINI_API_KEY)
+// 2. Local Storage (user provided)
+
+const builtInKey = import.meta.env.VITE_GEMINI_API_KEY;
+const storedKey = localStorage.getItem("gemini_api_key");
+
+const apiKeyModal = document.getElementById("api-key-modal");
+const apiKeyInput = document.getElementById("api-key-input");
+const saveKeyBtn = document.getElementById("save-api-key");
+const errorMsg = document.getElementById("api-key-error");
+
+function startApp(apiKey) {
+  const controller = new InteractionController(
+    eventBus,
+    animationEngine,
+    apiKey,
+  );
+  controller.start();
+}
+
+function init() {
+  if (builtInKey) {
+    // If env var is present (e.g. dev mode with .env), just use it
+    console.log("Using built-in API key");
+    startApp(builtInKey);
+  } else if (storedKey) {
+    // If user has previously saved a key
+    console.log("Using stored API key");
+    startApp(storedKey);
+  } else {
+    // Show modal to ask for key
+    apiKeyModal.classList.remove("hidden");
+  }
+}
+
+// Handle Modal Interactions
+saveKeyBtn.addEventListener("click", () => {
+  const inputKey = apiKeyInput.value.trim();
+  if (inputKey.length > 0) {
+    // Basic validation (could be improved)
+    localStorage.setItem("gemini_api_key", inputKey);
+    apiKeyModal.classList.add("hidden");
+    startApp(inputKey);
+  } else {
+    errorMsg.classList.remove("hidden");
+  }
+});
+
+// Allow Enter key to submit
+apiKeyInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    saveKeyBtn.click();
+  }
+});
+
+// Start the check
+init();

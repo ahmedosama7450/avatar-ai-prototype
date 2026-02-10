@@ -1,14 +1,16 @@
 import { GoogleGenAI } from "@google/genai";
 
 export class GeminiService {
-  constructor() {
-    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-    if (!apiKey) {
+  constructor(apiKey) {
+    // Use provided key, or fallback to env var (useful for dev)
+    const key = apiKey || import.meta.env.VITE_GEMINI_API_KEY;
+
+    if (!key) {
       throw new Error(
-        "VITE_GEMINI_API_KEY is required. Add it to your .env file.",
+        "API Key is required. Please provide it in the settings.",
       );
     }
-    this.ai = new GoogleGenAI({ apiKey });
+    this.ai = new GoogleGenAI({ apiKey: key });
   }
 
   async sendMessage(contents) {

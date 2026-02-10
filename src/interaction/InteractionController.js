@@ -4,10 +4,10 @@ import { VoiceOutput } from "./VoiceOutput.js";
 import { UIControls } from "./UIControls.js";
 
 export class InteractionController {
-  constructor(eventBus, animationEngine) {
+  constructor(eventBus, animationEngine, apiKey) {
     this.eventBus = eventBus;
     this.animationEngine = animationEngine;
-    this.conversation = new ConversationManager();
+    this.conversation = new ConversationManager(apiKey);
     this.voiceInput = new VoiceInput(eventBus);
     this.voiceOutput = new VoiceOutput(eventBus);
     this.ui = new UIControls(eventBus);

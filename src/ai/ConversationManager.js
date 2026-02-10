@@ -2,8 +2,8 @@ import { GeminiService } from "./GeminiService.js";
 import { SYSTEM_PROMPT, INITIAL_MESSAGE } from "./SystemPrompt.js";
 
 export class ConversationManager {
-  constructor() {
-    this.gemini = new GeminiService();
+  constructor(apiKey) {
+    this.gemini = new GeminiService(apiKey);
     this.history = [];
     this.currentStage = "GREETING";
   }

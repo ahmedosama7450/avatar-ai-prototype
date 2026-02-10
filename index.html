@@ -46,6 +46,27 @@
           <span id="mic-label">Tap to speak</span>
         </button>
       </div>
+      <div id="api-key-modal" class="modal hidden">
+        <div class="modal-content">
+          <h2>Welcome to Buddy!</h2>
+          <p>To start your adventure, please enter your Gemini API Key.</p>
+          <p class="small-text">
+            You can get one from
+            <a href="https://aistudio.google.com/app/apikey" target="_blank"
+              >Google AI Studio</a
+            >.
+          </p>
+          <input
+            type="password"
+            id="api-key-input"
+            placeholder="Paste your API Key here"
+          />
+          <button id="save-api-key">Start Adventure</button>
+          <p id="api-key-error" class="error-message hidden">
+            Please enter a valid API Key.
+          </p>
+        </div>
+      </div>
       <div id="loading-overlay" class="hidden">
         <div class="spinner"></div>
       </div>
