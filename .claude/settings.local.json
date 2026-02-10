@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(if exist \"avatar-example.png\" move \"avatar-example.png\" \"public\\\\avatar-example.png\")",
+      "Bash(npx vite build)",
+      "Bash(npx vite:*)"
+    ]
+  }
+}

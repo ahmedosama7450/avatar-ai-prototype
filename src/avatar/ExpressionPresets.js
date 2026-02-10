@@ -1,0 +1,61 @@
+export const EXPRESSIONS = {
+  neutral: {
+    eyeOpenness: 1,
+    eyeScale: 1,
+    pupilX: 0,
+    pupilY: 0,
+    eyebrowRaise: 0,
+    mouthOpen: 0,
+    mouthSmile: 0.4,
+    mouthWidth: 0.5,
+    blushOpacity: 0,
+  },
+
+  happy: {
+    eyeOpenness: 0.85,
+    eyeScale: 1.1,
+    pupilX: 0,
+    pupilY: 0,
+    eyebrowRaise: 0.4,
+    mouthOpen: 0.15,
+    mouthSmile: 1.0,
+    mouthWidth: 0.6,
+    blushOpacity: 0.25,
+  },
+
+  excited: {
+    eyeOpenness: 1.0,
+    eyeScale: 1.15,
+    pupilX: 0,
+    pupilY: 0,
+    eyebrowRaise: 0.7,
+    mouthOpen: 0.4,
+    mouthSmile: 1.0,
+    mouthWidth: 0.65,
+    blushOpacity: 0.2,
+  },
+
+  thinking: {
+    eyeOpenness: 0.9,
+    eyeScale: 1.0,
+    pupilX: 0.5,
+    pupilY: -0.3,
+    eyebrowRaise: 0.6,
+    mouthOpen: 0,
+    mouthSmile: 0.15,
+    mouthWidth: 0.35,
+    blushOpacity: 0,
+  },
+
+  encouraging: {
+    eyeOpenness: 0.95,
+    eyeScale: 1.08,
+    pupilX: 0,
+    pupilY: 0,
+    eyebrowRaise: 0.3,
+    mouthOpen: 0.1,
+    mouthSmile: 0.85,
+    mouthWidth: 0.55,
+    blushOpacity: 0.15,
+  },
+};
