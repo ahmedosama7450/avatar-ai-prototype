@@ -106,7 +106,7 @@ document.addEventListener("keydown", (e) => {
 // 2. Local Storage (user provided)
 
 const builtInKey = import.meta.env.VITE_GEMINI_API_KEY;
-const storedKey = localStorage.getItem("gemini_api_key");
+// const storedKey = localStorage.getItem("gemini_api_key"); // Removed persistence
 
 const apiKeyModal = document.getElementById("api-key-modal");
 const apiKeyInput = document.getElementById("api-key-input");
@@ -127,10 +127,6 @@ function init() {
     // If env var is present (e.g. dev mode with .env), just use it
     console.log("Using built-in API key");
     startApp(builtInKey);
-  } else if (storedKey) {
-    // If user has previously saved a key
-    console.log("Using stored API key");
-    startApp(storedKey);
   } else {
     // Show modal to ask for key
     apiKeyModal.classList.remove("hidden");
@@ -142,7 +138,7 @@ saveKeyBtn.addEventListener("click", () => {
   const inputKey = apiKeyInput.value.trim();
   if (inputKey.length > 0) {
     // Basic validation (could be improved)
-    localStorage.setItem("gemini_api_key", inputKey);
+    // localStorage.setItem("gemini_api_key", inputKey); // Removed persistence
     apiKeyModal.classList.add("hidden");
     startApp(inputKey);
   } else {
