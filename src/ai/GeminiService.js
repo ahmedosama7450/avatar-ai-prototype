@@ -15,7 +15,7 @@ export class GeminiService {
 
   async sendMessage(contents) {
     const response = await this.ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-2.5-flash",
       contents,
       config: {
         temperature: 0.7,
