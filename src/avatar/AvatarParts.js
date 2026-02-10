@@ -6,7 +6,7 @@
 
 const CX = 256; // canvas center X
 const CY_HEAD = 240; // head center Y
-const CY_BODY = 480; // body center Y
+const CY_BODY = 420; // body center Y
 
 export function drawBackground(ctx, w, h) {
   const grad = ctx.createLinearGradient(0, 0, 0, h);
@@ -26,8 +26,9 @@ export function drawBody(ctx, params) {
   // Neck
   ctx.fillStyle = "#f5d0a9";
   ctx.beginPath();
-  ctx.moveTo(-20, -80);
-  ctx.lineTo(20, -80);
+  // Extend neck upwards into the head area (from -80 to -150)
+  ctx.moveTo(-20, -150);
+  ctx.lineTo(20, -150);
   ctx.lineTo(18, -40);
   ctx.lineTo(-18, -40);
   ctx.closePath();
